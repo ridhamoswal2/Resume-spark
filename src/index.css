@@ -1,0 +1,247 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 215 85% 24%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/* Resume page base styles */
+.resume-page {
+  width: 210mm;
+  min-height: 297mm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.1);
+  background: white;
+  line-height: 1.5;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Resume template containers - ensure they fill the page */
+.resume-template-container {
+  width: 100%;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fix for Creative and Executive templates that use grid */
+.resume-template-container.flex {
+  min-height: 297mm;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .resume-page {
+    margin: 0;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Ensure elements don't break across pages */
+  .resume-template-container > div {
+    page-break-inside: avoid;
+  }
+}
+
+/* For scrollable preview with proper height */
+.preview-container {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* Make text more readable */
+.resume-page p {
+  margin-bottom: 0.5em;
+  line-height: 1.6;
+}
+
+/* ATS optimization - ensure good contrast and readable text */
+.resume-page h1, 
+.resume-page h2, 
+.resume-page h3 {
+  margin-bottom: 0.5em;
+}
+
+/* Resume export styles - these will only apply during export */
+.resume-export {
+  transform: none !important;
+  transform-origin: center !important;
+  width: 210mm !important;
+  height: 297mm !important;
+  max-width: none !important;
+  overflow: hidden !important;
+}
+
+/* Responsive Zoom Controls */
+.zoom-controls {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* Resume Colors */
+.text-resume-blue {
+  color: #1e40af;
+}
+
+.text-resume-blue-light {
+  color: #3b82f6;
+}
+
+.text-resume-gray {
+  color: #6b7280;
+}
+
+.text-resume-gray-dark {
+  color: #374151;
+}
+
+.text-resume-green {
+  color: #10b981;
+}
+
+.text-resume-slate {
+  color: #475569;
+}
+
+.text-resume-slate-dark {
+  color: #1e293b;
+}
+
+.text-resume-amber {
+  color: #f59e0b;
+}
+
+.border-resume-blue {
+  border-color: #1e40af;
+}
+
+.border-resume-blue-light {
+  border-color: #3b82f6;
+}
+
+.border-resume-green {
+  border-color: #10b981;
+}
+
+.border-resume-amber-light {
+  border-color: #fcd34d;
+}
+
+.bg-resume-blue {
+  background-color: #1e40af;
+}
+
+.bg-resume-blue-light {
+  background-color: #3b82f6;
+}
+
+.bg-resume-green {
+  background-color: #10b981;
+}
+
+.bg-resume-amber {
+  background-color: #f59e0b;
+}
