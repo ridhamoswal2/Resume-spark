@@ -10,13 +10,7 @@ import {
   FileImage, 
   FileText, 
   Printer, 
-  Save, 
-  Share2, 
-  Copy, 
-  Layers, 
-  Wand2, 
-  AlertCircle,
-  Sparkles
+  Save
 } from "lucide-react";
 import { initialResumeData, ResumeData, TemplateType } from "@/lib/resumeData";
 import ResumeTemplates from "@/components/ResumeTemplates";
@@ -32,10 +26,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
-import { AiSuggestionDialog } from "@/components/AiSuggestionDialog";
-import { ResumeAnalysis } from "@/components/ResumeAnalysis";
-import { ShareDialog } from "@/components/ShareDialog";
 import { Badge } from "@/components/ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Progress } from "@/components/ui/progress";
@@ -54,12 +44,8 @@ const Builder = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateType>(templateParam || "modern");
   
   const [previewScale, setPreviewScale] = useState<number>(0.5);
-  const [showAiDialog, setShowAiDialog] = useState(false);
-  const [showAnalysisDialog, setShowAnalysisDialog] = useState(false);
-  const [showShareDialog, setShowShareDialog] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const [resumeScore, setResumeScore] = useState(75);
   const [unsavedChanges, setUnsavedChanges] = useState(false);
   const [isPreviewFullScreen, setIsPreviewFullScreen] = useState(false);
   
@@ -108,13 +94,6 @@ const Builder = () => {
     }, 800);
   };
 
-  const handleDuplicateResume = () => {
-    toast({
-      title: "Resume duplicated",
-      description: "A copy of your resume has been created.",
-    });
-  };
-
   const handleDownloadPDF = () => {
     exportToPDF(resumeData, selectedTemplate);
   };
@@ -158,12 +137,6 @@ const Builder = () => {
   };
 
   const completionPercentage = calculateCompletionPercentage();
-
-  const getScoreColor = (score: number) => {
-    if (score >= 90) return "text-green-500";
-    if (score >= 70) return "text-yellow-500";
-    return "text-red-500";
-  };
 
   return (
     <div className={`min-h-screen bg-gray-50 flex flex-col ${isPreviewFullScreen ? 'overflow-hidden' : ''}`}>
@@ -223,34 +196,6 @@ const Builder = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="gap-2">
-                  <Layers className="h-4 w-4" />
-                  Actions
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setShowAiDialog(true)} className="gap-2">
-                  <Wand2 className="h-4 w-4" />
-                  <span>AI Suggestions</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setShowAnalysisDialog(true)} className="gap-2">
-                  <AlertCircle className="h-4 w-4" />
-                  <span>ATS Analysis</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleDuplicateResume} className="gap-2">
-                  <Copy className="h-4 w-4" />
-                  <span>Duplicate Resume</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setShowShareDialog(true)} className="gap-2">
-                  <Share2 className="h-4 w-4" />
-                  <span>Share Resume</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
         </div>
         
@@ -271,43 +216,7 @@ const Builder = () => {
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button variant="ghost" size="sm" className="rounded-full w-8 h-8 p-0">
-                      <div className={`flex items-center justify-center w-8 h-8 rounded-full border-2 ${getScoreColor(resumeScore)}`}>
-                        <span className="text-xs font-semibold">{resumeScore}</span>
-                      </div>
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-80">
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <h4 className="font-medium">Resume Score</h4>
-                        <span className={`font-semibold ${getScoreColor(resumeScore)}`}>{resumeScore}/100</span>
-                      </div>
-                      <Progress value={resumeScore} max={100} className="h-2" />
-                      <ul className="text-sm space-y-2">
-                        <li className="flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                          <span>Content is well-structured</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                          <span>Could use more keywords relevant to your industry</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                          <span>Experience descriptions are too generic</span>
-                        </li>
-                      </ul>
-                      <Button size="sm" className="w-full" onClick={() => setShowAnalysisDialog(true)}>
-                        View Full Analysis
-                      </Button>
-                    </div>
-                  </PopoverContent>
-                </Popover>
-                
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button variant="ghost" size="sm" className="rounded-full w-8 h-8 p-0">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-blue-500">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 text-blue-500">
                         <span className="text-xs font-semibold">{completionPercentage}%</span>
                       </div>
                     </Button>
@@ -356,18 +265,9 @@ const Builder = () => {
               <Card className="mt-4 overflow-hidden border-gray-200 shadow-sm">
                 <TabsContent value="content" className="p-0 focus:outline-none">
                   <div className="p-6">
-                    <div className="mb-4 flex justify-between items-center">
+                    <div className="mb-4">
                       <h3 className="text-lg font-medium">Edit Your Resume</h3>
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="gap-1 text-indigo-600"
-                        onClick={() => setShowAiDialog(true)}
-                      >
-                        <Sparkles className="h-3.5 w-3.5" />
-                        AI Assist
-                      </Button>
-                      </div>
+                    </div>
                     <ResumeForm 
                       resumeData={resumeData} 
                       onUpdateResumeData={handleUpdateResumeData} 
@@ -460,60 +360,6 @@ const Builder = () => {
           </div>
         </div>
       </div>
-      
-      {/* AI Suggestion Dialog */}
-      <Dialog open={showAiDialog} onOpenChange={setShowAiDialog}>
-        <DialogContent className="max-w-3xl">
-          <DialogHeader>
-            <DialogTitle>AI Resume Enhancement</DialogTitle>
-            <DialogDescription>
-              Let our AI help you optimize your resume content for better results
-            </DialogDescription>
-          </DialogHeader>
-          <AiSuggestionDialog 
-            resumeData={resumeData} 
-            onApplySuggestions={(newData) => {
-              setResumeData(newData);
-              setUnsavedChanges(true);
-              setShowAiDialog(false);
-              toast({
-                title: "AI suggestions applied",
-                description: "Your resume has been updated with AI-optimized content.",
-              });
-            }} 
-          />
-        </DialogContent>
-      </Dialog>
-      
-      {/* ATS Analysis Dialog */}
-      <Dialog open={showAnalysisDialog} onOpenChange={setShowAnalysisDialog}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>ATS Analysis Report</DialogTitle>
-            <DialogDescription>
-              See how your resume performs against Applicant Tracking Systems
-            </DialogDescription>
-          </DialogHeader>
-          <ResumeAnalysis 
-            resumeData={resumeData} 
-            resumeScore={resumeScore}
-            onClose={() => setShowAnalysisDialog(false)}
-          />
-        </DialogContent>
-      </Dialog>
-      
-      {/* Share Dialog */}
-      <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle>Share Your Resume</DialogTitle>
-            <DialogDescription>
-              Choose how you want to share your resume
-            </DialogDescription>
-          </DialogHeader>
-          <ShareDialog onClose={() => setShowShareDialog(false)} />
-        </DialogContent>
-      </Dialog>
       
       <footer className="bg-white border-t py-6">
         <div className="container">

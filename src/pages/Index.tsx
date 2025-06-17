@@ -9,22 +9,21 @@ import {
   Clock, 
   Layout, 
   ArrowRight,
-  CheckCircle2,
-  Award
+  CheckCircle2
 } from "lucide-react";
 import Header from "@/components/Header";
 
 const Index = () => {
   const features = [
     {
-      icon: <Award className="h-6 w-6 text-indigo-500" />,
-      title: "ATS-Optimized Templates",
-      description: "Professionally designed templates that ensure your resume passes Applicant Tracking Systems with a 90% success rate"
+      icon: <FileText className="h-6 w-6 text-indigo-500" />,
+      title: "Professional Templates",
+      description: "Choose from our collection of professionally designed resume templates"
     },
     {
       icon: <Zap className="h-6 w-6 text-indigo-500" />,
-      title: "AI-Powered Smart Editor",
-      description: "Advanced AI suggestions and real-time optimization to make your resume stand out"
+      title: "Easy to Use",
+      description: "Simple and intuitive interface to build your resume quickly"
     },
     {
       icon: <Clock className="h-6 w-6 text-indigo-500" />,
@@ -39,15 +38,13 @@ const Index = () => {
   ];
 
   const benefits = [
-    "100% ATS-compliant templates trusted by professionals",
-    "AI-powered content suggestions and keyword optimization",
-    "Real-time resume score and improvement tips",
-    "Multiple export formats with custom styling",
-    "24/7 customer support and expert guidance",
-    "Industry-specific templates and examples"
+    "Professional resume templates",
+    "Easy-to-use resume builder",
+    "Export in multiple formats",
+    "Customizable sections and styling"
   ];
 
-  const resumePreviewImage = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjEwMDAiIHZpZXdCb3g9IjAgMCA4MDAgMTAwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjEwMDAiIGZpbGw9IndoaXRlIi8+PHJlY3QgeD0iNDAiIHk9IjQwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VCRjRGRiIgcng9IjgiLz48cmVjdCB4PSIyODAiIHk9IjQwIiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQ4IiBmaWxsPSIjRUJGNEZGIiByeD0iOCIvPjxyZWN0IHg9IjI4MCIgeT0iMTA0IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRUJGNEZGIiByeD0iOCIvPjxyZWN0IHg9IjQwIiB5PSIyODAiIHdpZHRoPSI3MjAiIGhlaWdodD0iMzIiIGZpbGw9IiM0MzM4Q0EiIHJ4PSI4Ii8+PHJlY3QgeD0iNDAiIHk9IjM0MCIgd2lkdGg9IjcyMCIgaGVpZ2h0PSIxNiIgZmlsbD0iI0VCRjRGRiIgcng9IjgiLz48cmVjdCB4PSI0MCIgeT0iMzgwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRUJGNEZGIiByeD0iOCIvPjxyZWN0IHg9IjQwIiB5PSI0MjAiIHdpZHRoPSI3MjAiIGhlaWdodD0iMTYiIGZpbGw9IiNFQkY0RkYiIHJ4PSI4Ii8+PHJlY3QgeD0iNDAiIHk9IjQ4MCIgd2lkdGg9IjcyMCIgaGVpZ2h0PSIzMiIgZmlsbD0iIzQzMzhDQSIgcng9IjgiLz48cmVjdCB4PSI0MCIgeT0iNTQwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRUJGNEZGIiByeD0iOCIvPjxyZWN0IHg9IjQwIiB5PSI1ODAiIHdpZHRoPSI3MjAiIGhlaWdodD0iMTYiIGZpbGw9IiNFQkY0RkYiIHJ4PSI4Ii8+PHJlY3QgeD0iNDAiIHk9IjYyMCIgd2lkdGg9IjcyMCIgaGVpZ2h0PSIxNiIgZmlsbD0iI0VCRjRGRiIgcng9IjgiLz48cmVjdCB4PSI0MCIgeT0iNjgwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjNDMzOENBIiByeD0iOCIvPjxyZWN0IHg9IjQwIiB5PSI3NDAiIHdpZHRoPSI3MjAiIGhlaWdodD0iMTYiIGZpbGw9IiNFQkY0RkYiIHJ4PSI4Ii8+PHJlY3QgeD0iNDAiIHk9Ijc4MCIgd2lkdGg9IjcyMCIgaGVpZ2h0PSIxNiIgZmlsbD0iI0VCRjRGRiIgcng9IjgiLz48cmVjdCB4PSI0MCIgeT0iODIwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRUJGNEZGIiByeD0iOCIvPjwvc3ZnPg==";
+  const resumePreviewImage = "/resume-preview.png";
 
   return (
     <div className="min-h-screen bg-white">
@@ -61,19 +58,11 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="max-w-2xl">
               <div className="mb-8">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-2 text-sm text-indigo-600 animate-pulse">
-                  <span className="font-medium">Limited Time Offer</span>
-                  <span className="text-indigo-400">|</span>
-                  <span>50% Off Premium Templates</span>
-                </div>
                 <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">
-                  Land Your Dream Job with an <span className="text-indigo-600 relative">
-                    ATS-Optimized
-                    <span className="absolute bottom-0 left-0 w-full h-2 bg-indigo-100 -z-10"></span>
-                  </span> Resume
+                  Create Your Professional Resume in Minutes
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Join over 100,000+ professionals who've trusted ResumeSpark to create stunning, ATS-friendly resumes that get more interviews and job offers.
+                  Build a professional resume easily with our intuitive resume builder and professionally designed templates.
                 </p>
               </div>
               
@@ -91,7 +80,7 @@ const Index = () => {
               </div>
 
               <div className="flex flex-col gap-4">
-                {benefits.slice(0, 3).map((benefit, index) => (
+                {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center gap-3 bg-white/50 backdrop-blur-sm rounded-lg p-3 shadow-sm">
                     <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0" />
                     <span className="text-gray-700 font-medium">{benefit}</span>
@@ -102,21 +91,12 @@ const Index = () => {
             
             <div className="relative lg:ml-auto">
               <div className="relative rounded-xl overflow-hidden shadow-2xl bg-white transform transition-transform hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent pointer-events-none" />
                 <img 
                   src={resumePreviewImage}
                   alt="Resume Preview" 
                   className="w-full"
                 />
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-gray-700">Live Preview</span>
-                  </div>
-                </div>
               </div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-indigo-50 rounded-full blur-2xl opacity-60 animate-pulse" />
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-indigo-50 rounded-full blur-2xl opacity-60 animate-pulse" />
             </div>
           </div>
         </div>
@@ -128,10 +108,10 @@ const Index = () => {
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight">
-              Craft the Perfect Resume with Powerful Features
+              Everything You Need to Create a Great Resume
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Our intelligent resume builder combines beautiful design with powerful features to help you create a resume that gets results
+              Our resume builder combines beautiful design with powerful features to help you create a professional resume
             </p>
           </div>
           
@@ -160,10 +140,10 @@ const Index = () => {
         <div className="relative container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-white mb-6 tracking-tight">
-              Start Building Your Professional Resume Today
+              Start Building Your Resume Today
             </h2>
             <p className="text-xl text-indigo-100 mb-10 leading-relaxed">
-              Join thousands of successful professionals who have already created stunning resumes with ResumeSpark. Try it free, no credit card required.
+              Create a professional resume in minutes with our easy-to-use builder.
             </p>
             <Link to="/builder">
               <Button size="lg" className="bg-white text-indigo-600 hover:bg-indigo-50 shadow-lg shadow-indigo-900/20 transform transition hover:-translate-y-1">
@@ -177,41 +157,9 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-white border-t py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="col-span-2 md:col-span-1">
-              <h3 className="font-semibold text-gray-900 mb-4">ResumeSpark</h3>
-              <p className="text-sm text-gray-600">
-                Create professional resumes that help you land your dream job.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-4">Product</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">Templates</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">Examples</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">Pricing</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-4">Resources</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">Guide</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">FAQ</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">Blog</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">About</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">Contact</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-indigo-600">Privacy</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-12 pt-8 border-t">
-            <p className="text-sm text-gray-600 text-center">
-              © {new Date().getFullYear()} ResumeSpark. All rights reserved.
+          <div className="text-center">
+            <p className="text-sm text-gray-600">
+              © {new Date().getFullYear()} ResumeSpark. Create professional resumes that help you land your dream job.
             </p>
           </div>
         </div>
