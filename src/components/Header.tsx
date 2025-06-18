@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sparkles, Menu } from "lucide-react";
+import { Sparkles, Menu, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -44,11 +44,22 @@ const Header = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            {!isActive('/builder') && (
-              <Button asChild variant="default" size="sm">
-                <Link to="/builder">Create Resume</Link>
-              </Button>
-            )}
+            <Button 
+              asChild 
+              variant="outline" 
+              size="sm" 
+              className="gap-2 bg-black text-white hover:bg-white hover:text-black transition-all duration-300 border-black hover:border-black"
+            >
+              <a 
+                href="https://github.com/ridhamoswal2" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Github className="h-4 w-4" />
+                GitHub
+              </a>
+            </Button>
             
             {/* Mobile menu */}
             <Sheet>
@@ -77,8 +88,20 @@ const Header = () => {
                   </nav>
                   
                   <div className="flex flex-col gap-2 pt-4 border-t">
-                    <Button asChild>
-                      <Link to="/builder">Create Resume</Link>
+                    <Button 
+                      asChild 
+                      variant="outline" 
+                      className="gap-2 bg-black text-white hover:bg-white hover:text-black transition-all duration-300 border-black hover:border-black"
+                    >
+                      <a 
+                        href="https://github.com/ridhamoswal2" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <Github className="h-4 w-4" />
+                        GitHub
+                      </a>
                     </Button>
                   </div>
                 </div>
