@@ -10,7 +10,7 @@ const Header = () => {
   
   const navigation = [
     { name: 'Templates', path: '/templates' },
-    { name: 'Create Resume', path: '/builder' },
+    { name: 'Builder', path: '/builder' },
   ];
 
   return (
